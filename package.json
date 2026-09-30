@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --mode ssr",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify": "tsc -p tsconfig.verify.json && node /tmp/verify/scripts/verify-engine.js"
   },
   "dependencies": {
     "@builder.io/qwik": "^1.20.1",
