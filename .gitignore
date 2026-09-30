@@ -1,0 +1,6 @@
+node_modules
+dist
+server
+.DS_Store
+npm-debug.log*
+scripts/.sync.test.run.mjs

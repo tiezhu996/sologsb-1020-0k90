@@ -31,7 +31,7 @@ export const seedRecords = (): ArchiveRecord[] => [
   makeRecord('a-004', 'A', '木版年画艺人陈桂生', '2015-06-21', ['陈桂生'], ['桃花乡'], 'CRAFT-CGS-2015', 'DV录像', '86分钟', 'CC BY-NC 4.0', '记录了套色过程'),
   makeRecord('b-004', 'B', '陈桂生师傅年画工艺访谈', '2015-06-22', ['陈桂生', '许小琴'], ['桃花乡'], 'CRAFT-2015-06', '视频', '01:26:04', 'CC BY-NC 4.0', '拍摄日期可能相差一天'),
   makeRecord('a-005', 'A', '赤水河盐运档案访谈（上）', '2018-02-15', ['杨启富'], ['赤水镇'], 'OH-YQF-2018-A', '数字录音', '01:10:00', '研究者授权', ''),
-  makeRecord('b-005', 'B', '杨启富谈赤水河盐运', '2018-02-15', ['杨启富'], ['赤水镇', '盐仓'], 'OH-2018-050', '数字录音', '01:10:18', '研究者授权', '元数据人员补充了地点“盐仓”'),
+  makeRecord('b-005', 'B', '杨启富谈赤水河盐运', '2018-02-15', ['杨启富'], ['赤水镇', '盐仓'], 'OH-2017-050', '数字录音', '01:10:18', '研究者授权', '元数据人员补充了地点“盐仓”'),
   makeRecord('a-006', 'A', '民间中医刘绍安手稿', '1998-12-01', ['刘绍安'], ['安平村'], 'MS-LSA-1998', '纸质手稿', '34页', '公版', '作者去世已满五十年'),
   makeRecord('b-006', 'B', '刘绍安医案抄本', '1998-11-30', ['刘绍安'], ['安平村'], 'MANU-LSA-98', '扫描件', '33页', '公版', '日期按抄本落款录为11月30日'),
   makeRecord('a-007', 'A', '铁路建设者赵春生采访', '2021-07-09', ['赵春生'], ['北岭市'], 'OH-ZCS-2021', '数字录音', '01:03:42', '研究者授权', ''),
@@ -42,14 +42,22 @@ export const seedRecords = (): ArchiveRecord[] => [
 
 export const seedState = (): ArchiveState => {
   const records = seedRecords();
+  const matches = computeMatches(records);
   return {
     revision: 1,
     records,
-    matches: computeMatches(records),
+    matches,
     merges: [],
     audit: [{ id: 'seed', at: now, action: '初始化数据', detail: '导入两组示例口述史与手稿记录并完成首轮匹配', recordIds: [] }],
     activeMatchId: '',
     selectedRecordIds: [],
-    hydrated: false
+    hydrated: false,
+    stationId: 'station-center-01',
+    stationName: '县档案馆中心核对室',
+    stationRole: 'center',
+    fork: undefined,
+    packages: [],
+    arbitrations: [],
+    provenance: {}
   };
 };
